@@ -26,6 +26,7 @@ int inotify_add_watch (int fd, const char *pathname, uint32_t mask)
   int prev_watch;
 
   if(!initialized) {
+    /* Note: watch limit is 1024 */
     hcreate_r(1024, &tbl);
     initialized = 1;
   }

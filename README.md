@@ -10,11 +10,11 @@ The trick is using [LD_PRELOAD][ld_preload] to stub out [inotify_add_watch(2)][a
 
     make
     
-That should create a `stubwatch.o` file.
+That should create a `stubwatch.so` file.
 
 ## Using
 
-    LD_PRELOAD=/path/to/stubwatch.o boot some-task
+    LD_PRELOAD=/path/to/stubwatch.so boot some-task
 
 [circleci]: https://circleci.com/
 [bootclj]: http://boot-clj.com/

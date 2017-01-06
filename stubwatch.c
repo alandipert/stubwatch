@@ -1,18 +1,18 @@
-/* Based on https://readmes.numm.org/init/upstart/init/tests/wrap_inotify.c */
+/* Inspirado: https://readmes.numm.org/init/upstart/init/tests/wrap_inotify.c */
 #define _GNU_SOURCE
 
 #include <stdio.h>
 #include <search.h>
 #include <stdint.h>
 
-static void __hset(struct hsearch_data *tbl, const char *k, int v) {
+void __hset(struct hsearch_data *tbl, const char *k, int v) {
   ENTRY e, *ep;
   e.key  = (char*)(size_t)k;
   e.data = (void*)(intptr_t)v;
   hsearch_r(e, ENTER, &ep, tbl);
 }
 
-static int __hget(struct hsearch_data *tbl, const char *k) {
+int __hget(struct hsearch_data *tbl, const char *k) {
   ENTRY e, *ep;
   e.key = (char*)(size_t)k;
   return hsearch_r(e, FIND, &ep, tbl) ? (intptr_t)ep->data : -1;

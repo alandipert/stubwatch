@@ -1,8 +1,13 @@
+OBJ = stubwatch.o
+SO = stubwatch.so
+
 %.o: %.c
 	gcc -c -fPIC -o $@ $< -I.
 
-all: stubwatch.o
-	gcc $< -shared -o stubwatch.so
+$(SO): $(OBJ)
+	gcc $< -shared -o $(SO)
+
+all: $(SO)
 
 clean:
 	rm -f *.o *.so
